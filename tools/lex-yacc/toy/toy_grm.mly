@@ -5,13 +5,29 @@ open Types
 %token IF THEN ELSE
 %token PLUS EQ
 %token READ PRINT
-%token SEMICOMMA
+%token COLON
+%token EOF
 %token <int> NUM
 %token <string> IDENT
-%type <Types.expr> expr
-%start expr
+%type <Types.prog> start
+%start start
 
 %%
+
+start:
+  prog EOF
+  {
+    List.rev $1
+  }
+;
+
+prog :
+    expr { [$1] }
+  | prog COLON expr
+    {
+      $3 :: $1
+    }
+;
 
 expr :
    IF expr THEN expr ELSE expr

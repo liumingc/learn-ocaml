@@ -1,1 +1,4 @@
-if 3 then print 4 else print 5
+if 3 then print 4 else print 5 ;
+print 234;
+a = 679;
+print a

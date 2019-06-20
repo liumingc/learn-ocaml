@@ -12,6 +12,9 @@ rule lex_entry = parse
   | "read" { READ }
   | "=" { EQ }
   | "+" { PLUS }
+  | ';' { COLON }
   | ['0'-'9']+ as lxm { NUM (int_of_string lxm )}
   | ['a'-'z' 'A'-'Z' '_']+ as lxm { IDENT lxm }
-  | eof { raise Lex_eof }
+  | eof { EOF }
+
+  (*| eof { raise Lex_eof }*)
