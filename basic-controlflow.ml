@@ -1,11 +1,18 @@
+(* binding precedence from high to low:
+if
+;
+try match let fun function
+*)
 (* if ... then ... *)
 let a = 3 in
 let b = 4 in
   if a < 5 || b < 5 then
+    begin
     print_int a;
     print_endline ", ";
-    print_int b;
-    print_endline ";"
+    end;
+  print_int b;
+  print_endline ";"
 ;;
 
 (* for ... do ... done *)
